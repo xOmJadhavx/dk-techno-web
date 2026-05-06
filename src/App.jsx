@@ -867,64 +867,20 @@ function App() {
                   <h4 style={{ color: 'var(--brand-cyan)', margin: 0, fontSize: '1.1rem' }}>{t.company}</h4>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="section" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2560&auto=format&fit=crop)' }}>
+      <section id="contact" className="section" style={{ background: 'var(--bg-primary)', position: 'relative', overflow: 'hidden' }}>
         <div className="container">
-          <div className="custom-form-container">
-            {/* Left Column: Files you can upload */}
-            <div className="glass-panel" style={{ padding: '2rem' }}>
-              <h2 className="section-title" style={{ fontSize: '1.8rem', margin: 0, marginBottom: '1rem', textAlign: 'left' }}>Files You Can Upload</h2>
+          <div className="section-header">
+            <h2 className="section-title">Contact Us</h2>
+            <p className="section-subtitle">
+              Ready to start your next project? Get in touch with our engineering team today.
+            </p>
+          </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <div className="accordion-item">
-                  <div className={`accordion-header ${activeAccordion === 0 ? 'active' : ''}`} onClick={() => toggleAccordion(0)}>
-                    <span>3D File Types</span>
-                    {activeAccordion === 0 ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </div>
-                  <div className={`accordion-content ${activeAccordion === 0 ? 'open' : ''}`}>
-                    <p style={{ paddingTop: '1rem' }}><strong>3D Drawing Formats:</strong> .step/.stp, .dwg, .m3d, .x_t, .sldprt, .stl, .CATPart, .CATProduct, .iges/.igs</p>
-                  </div>
-                </div>
-
-                <div className="accordion-item">
-                  <div className={`accordion-header ${activeAccordion === 1 ? 'active' : ''}`} onClick={() => toggleAccordion(1)}>
-                    <span>2D Drawing Types</span>
-                    {activeAccordion === 1 ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </div>
-                  <div className={`accordion-content ${activeAccordion === 1 ? 'open' : ''}`}>
-                    <p style={{ paddingTop: '1rem' }}><strong>2D Drawing Formats:</strong> .dwg, .dxf, .pdf</p>
-                  </div>
-                </div>
-
-                <div className="accordion-item">
-                  <div className={`accordion-header ${activeAccordion === 2 ? 'active' : ''}`} onClick={() => toggleAccordion(2)}>
-                    <span>Other Formats</span>
-                    {activeAccordion === 2 ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </div>
-                  <div className={`accordion-content ${activeAccordion === 2 ? 'open' : ''}`}>
-                    <p style={{ paddingTop: '1rem' }}>Any standard image formats (.png, .jpg) or archive files (.zip, .rar) for multiple components.</p>
-                  </div>
-                </div>
-              </div>
-
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1rem', lineHeight: '1.4' }}>
-                Please attach your 2D CAD drawings and 3D CAD models in any format including STEP, IGES, DWG, PDF, STL, etc. If you have multiple files, compress them into a ZIP or RAR. Alternatively, send your RFQ by email to <a href="mailto:dktechnoindustries@gmail.com" className="brand-accent">dktechnoindustries@gmail.com</a>
-              </p>
-
-              <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.25rem', fontSize: '0.95rem' }}>Consent to be contacted</h4>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.4', margin: 0 }}>
-                By contacting us, you agree to receive communications via email and phone. Your information will be used solely for customer support purposes and will not be shared with third parties.
-              </p>
-            </div>
-
-            {/* Right Column: Contact Form */}
-            <div className="glass-panel" style={{ padding: '2rem', background: 'var(--bg-glass-heavy)' }}>
-              <h3 style={{ fontSize: '1.8rem', textAlign: 'center', margin: 0, marginBottom: '1.25rem', color: 'var(--text-primary)' }}>Get In Touch</h3>
+          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+            {/* Contact Form */}
+            <div className="glass-panel" style={{ padding: '2.5rem', background: 'var(--bg-glass-heavy)' }}>
+              <h3 style={{ fontSize: '1.8rem', textAlign: 'center', margin: 0, marginBottom: '2rem', color: 'var(--text-primary)' }}>Get In Touch</h3>
               <form onSubmit={handleFormSubmit}>
                 <div className="form-group">
                   <label className="form-label">Name</label>
@@ -949,20 +905,14 @@ function App() {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Message</label>
-                  <textarea name="message" required className="form-control" placeholder="How can we help you? Please include details about your requirements."></textarea>
+                  <textarea name="message" required className="form-control" style={{ minHeight: '150px' }} placeholder="How can we help you? Please include details about your requirements."></textarea>
                 </div>
-                <div className="form-group">
-                  <label className="form-label">File Upload (Optional)</label>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--border-glass)', borderRadius: '8px', padding: '0.5rem' }}>
-                    <label style={{ background: 'var(--bg-glass)', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', border: '1px solid var(--border-glass)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
-                      <Upload size={16} /> Choose File
-                      <input type="file" name="attachment" style={{ display: 'none' }} onChange={(e) => {
-                        const fileName = e.target.files[0] ? e.target.files[0].name : "No file chosen";
-                        e.target.parentElement.nextSibling.innerText = fileName;
-                      }} />
-                    </label>
-                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '200px' }}>No file chosen</span>
-                  </div>
+
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Consent to be contacted</h4>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.4', margin: 0 }}>
+                    By contacting us, you agree to receive communications via email and phone for customer support purposes.
+                  </p>
                 </div>
 
                 {formStatus === 'Success' && (
