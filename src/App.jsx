@@ -893,7 +893,21 @@ function App() {
             gap: '4rem', 
             alignItems: 'center'
           }}>
-            {/* Left Column: Inquiry Form */}
+            {/* Left Column: Branding & Info */}
+            <div className="reveal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ width: '50px', height: '2px', background: 'var(--brand-cyan)' }}></div>
+                <span style={{ color: 'var(--brand-cyan)', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Connect With Us</span>
+              </div>
+              <h2 style={{ fontSize: '3.5rem', color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>
+                Let's Build the <span className="brand-accent">Future</span> Together.
+              </h2>
+              <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem', maxWidth: '500px' }}>
+                Ready to take your manufacturing to the next level? Our engineering team is standing by to discuss your precision requirements and provide a custom quote.
+              </p>
+            </div>
+
+            {/* Right Column: Inquiry Form */}
             <div className="glass-panel" style={{ 
               padding: '2.5rem', 
               background: 'var(--bg-glass-heavy)', 
@@ -950,20 +964,6 @@ function App() {
                   {formStatus === 'Submitting...' ? 'Sending...' : 'Submit Inquiry'}
                 </button>
               </form>
-            </div>
-
-            {/* Right Column: Branding & Info */}
-            <div className="reveal">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ width: '50px', height: '2px', background: 'var(--brand-cyan)' }}></div>
-                <span style={{ color: 'var(--brand-cyan)', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Connect With Us</span>
-              </div>
-              <h2 style={{ fontSize: '3.5rem', color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>
-                Let's Build the <span className="brand-accent">Future</span> Together.
-              </h2>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem', maxWidth: '500px' }}>
-                Ready to take your manufacturing to the next level? Our engineering team is standing by to discuss your precision requirements and provide a custom quote.
-              </p>
             </div>
           </div>
         </div>
