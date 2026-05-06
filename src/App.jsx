@@ -847,10 +847,12 @@ function App() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="section" style={{ 
-        backgroundImage: 'linear-gradient(rgba(20, 20, 25, 0.8), rgba(20, 20, 25, 0.8)), url(https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2560&auto=format&fit=crop)',
+        backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), url(https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
+        borderTop: '1px solid var(--border-glass)',
+        borderBottom: '1px solid var(--border-glass)'
       }}>
         <div className="container">
           <div className="section-header">
@@ -879,7 +881,7 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="section" style={{ 
-        backgroundImage: 'linear-gradient(rgba(30, 30, 35, 0.85), rgba(30, 30, 35, 0.85)), url(https://images.unsplash.com/photo-1516774485771-f0caadef1404?q=80&w=2560&auto=format&fit=crop)',
+        backgroundImage: 'linear-gradient(to top, rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.9)), url(https://images.unsplash.com/photo-1516774485771-f0caadef1404?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -887,17 +889,45 @@ function App() {
         overflow: 'hidden' 
       }}>
         <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Contact Us</h2>
-            <p className="section-subtitle">
-              Ready to start your next project? Get in touch with our engineering team today.
-            </p>
-          </div>
+          <div className="grid-2" style={{ gap: '4rem', alignItems: 'center' }}>
+            {/* Left Column: Branding & Info */}
+            <div className="reveal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ width: '50px', height: '2px', background: 'var(--brand-cyan)' }}></div>
+                <span style={{ color: 'var(--brand-cyan)', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Connect With Us</span>
+              </div>
+              <h2 style={{ fontSize: '3.5rem', color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>
+                Let's Build the <span className="brand-accent">Future</span> Together.
+              </h2>
+              <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2.5rem', maxWidth: '500px' }}>
+                Ready to take your manufacturing to the next level? Our engineering team is standing by to discuss your precision requirements and provide a custom quote.
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                  <div style={{ width: '45px', height: '45px', borderRadius: '12px', background: 'rgba(0,180,216,0.1)', display: 'flex', alignItems: 'center', justifyCenter: 'center', border: '1px solid rgba(0,180,216,0.2)' }}>
+                    <Mail size={20} className="brand-accent" style={{ margin: '0 auto' }} />
+                  </div>
+                  <div>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Email us at</p>
+                    <p style={{ margin: 0, fontWeight: '600', color: 'var(--text-primary)' }}>dktechnoindustries@gmail.com</p>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                  <div style={{ width: '45px', height: '45px', borderRadius: '12px', background: 'rgba(0,180,216,0.1)', display: 'flex', alignItems: 'center', justifyCenter: 'center', border: '1px solid rgba(0,180,216,0.2)' }}>
+                    <Phone size={20} className="brand-accent" style={{ margin: '0 auto' }} />
+                  </div>
+                  <div>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Call us</p>
+                    <p style={{ margin: 0, fontWeight: '600', color: 'var(--text-primary)' }}>+91 96231 59111</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            {/* Contact Form */}
-            <div className="glass-panel" style={{ padding: '2.5rem', background: 'var(--bg-glass-heavy)' }}>
-              <h3 style={{ fontSize: '1.8rem', textAlign: 'center', margin: 0, marginBottom: '2rem', color: 'var(--text-primary)' }}>Get In Touch</h3>
+            {/* Right Column: Contact Form */}
+            <div className="glass-panel" style={{ padding: '2.5rem', background: 'var(--bg-glass-heavy)', border: '1px solid var(--border-glass)' }}>
+              <h3 style={{ fontSize: '1.8rem', margin: 0, marginBottom: '2rem', color: 'var(--text-primary)' }}>Inquiry Form</h3>
               <form onSubmit={handleFormSubmit}>
                 <div className="form-group">
                   <label className="form-label">Name</label>
@@ -922,13 +952,12 @@ function App() {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Message</label>
-                  <textarea name="message" required className="form-control" style={{ minHeight: '150px' }} placeholder="How can we help you? Please include details about your requirements."></textarea>
+                  <textarea name="message" required className="form-control" style={{ minHeight: '120px' }} placeholder="How can we help you?"></textarea>
                 </div>
 
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Consent to be contacted</h4>
                   <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.4', margin: 0 }}>
-                    By contacting us, you agree to receive communications via email and phone for customer support purposes.
+                    By clicking submit, you agree to our privacy policy and terms.
                   </p>
                 </div>
 
