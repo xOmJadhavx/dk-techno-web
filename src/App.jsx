@@ -847,7 +847,7 @@ function App() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="section" style={{ 
-        backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url(https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2560&auto=format&fit=crop)',
+        backgroundImage: 'linear-gradient(rgba(20, 20, 25, 0.8), rgba(20, 20, 25, 0.8)), url(https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
@@ -879,7 +879,7 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="section" style={{ 
-        backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), url(https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2560&auto=format&fit=crop)',
+        backgroundImage: 'linear-gradient(rgba(30, 30, 35, 0.85), rgba(30, 30, 35, 0.85)), url(https://images.unsplash.com/photo-1516774485771-f0caadef1404?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
