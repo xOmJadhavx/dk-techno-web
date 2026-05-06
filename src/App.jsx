@@ -1019,9 +1019,6 @@ function App() {
 
           <div className="footer-bottom">
             <p style={{ marginBottom: '0.5rem' }}>&copy; {new Date().getFullYear()} D. K. Techno Industries. All rights reserved.</p>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-              This website is designed and developed by <a href="mailto:palppatel27@gmail.com" style={{ color: 'var(--brand-cyan)', textDecoration: 'none', fontWeight: '500', transition: 'color 0.3s ease' }} onMouseOver={(e) => e.target.style.color = 'var(--text-primary)'} onMouseOut={(e) => e.target.style.color = 'var(--brand-cyan)'}>Pal Patel</a>
-            </p>
           </div>
         </div>
       </footer>
