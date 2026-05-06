@@ -888,8 +888,8 @@ function App() {
         position: 'relative', 
         overflow: 'hidden' 
       }}>
-        <div className="container">
-          <div className="grid-2" style={{ gap: '4rem', alignItems: 'center' }}>
+        <div className="container" style={{ maxWidth: '1200px' }}>
+          <div className="grid-2" style={{ gap: '4rem', alignItems: 'flex-start', gridTemplateColumns: '1.2fr 1fr' }}>
             {/* Left Column: Branding & Info */}
             <div className="reveal">
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
