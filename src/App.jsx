@@ -957,26 +957,6 @@ function App() {
             </div>
           </div>
         </div>
-
-                {formStatus === 'Success' && (
-                  <div className="animate-fade-in" style={{ padding: '0.75rem', background: 'rgba(0, 255, 100, 0.1)', border: '1px solid rgba(0, 255, 100, 0.3)', color: '#00ff66', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>
-                    Thank you! Your message has been sent successfully. We will get back to you shortly.
-                  </div>
-                )}
-
-                {formStatus === 'Error' && (
-                  <div className="animate-fade-in" style={{ padding: '0.75rem', background: 'rgba(255, 0, 0, 0.1)', border: '1px solid rgba(255, 0, 0, 0.3)', color: '#ff4444', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>
-                    Oops! Something went wrong. Please try again or email us directly.
-                  </div>
-                )}
-
-                <button type="submit" disabled={formStatus === 'Submitting...'} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '1rem' }}>
-                  {formStatus === 'Submitting...' ? 'Sending...' : 'Submit Inquiry'}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Footer */}
