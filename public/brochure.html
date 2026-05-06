@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D. K. Techno Industries - Company Brochure</title>
+    <style>
+        :root {
+            --brand-navy: #0a1128;
+            --brand-cyan: #00b4d8;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            box-sizing: border-box;
+            page-break-after: always;
+            position: relative;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* Cover Page */
+        .cover {
+            background: var(--brand-navy);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--brand-cyan);
+        }
+
+        .cover p {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .logo-placeholder {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Pages */
+        .header {
+            border-bottom: 2px solid var(--brand-cyan);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            color: var(--brand-cyan);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            border-left: 5px solid var(--brand-navy);
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h4 {
+            margin-top: 0;
+            color: var(--brand-navy);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20mm;
+            left: 20mm;
+            right: 20mm;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            background: var(--brand-navy);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page cover">
+        <div class="logo-placeholder">
+            <img src="logo.png" alt="Logo" style="width: 120px;">
+        </div>
+        <h1>D. K. Techno Industries</h1>
+        <p>Excellence in Precision Manufacturing</p>
+        <div style="margin-top: 4rem; width: 80%; height: 2px; background: var(--brand-cyan);"></div>
+        <p style="font-size: 1.1rem; margin-top: 2rem;">SINCE 2011</p>
+    </div>
+
+    <!-- PAGE 2: ABOUT & STRENGTH -->
+    <div class="page">
+        <div class="header">
+            <h2>Company Profile</h2>
+            <img src="logo.png" alt="Logo" style="height: 40px;">
+        </div>
+        
+        <h3 class="section-title">About Us</h3>
+        <p>Founded in 2011 by <strong>Mrs. Kanta Eknath Gaikwad</strong>, D. K. Techno Industries has established itself as a premier name in the precision engineering sector. We specialize in the high-accuracy machining and fabrication of industrial components.</p>
+        
+        <h3 class="section-title">Our Strength</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Machining & Fabrication</h4>
+                <ul>
+                    <li>CNC Turning & VMC 4th Axis</li>
+                    <li>Precision Machined Components</li>
+                    <li>Forging & Casting Components</li>
+                    <li>Sheet Metal Fabrication</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Quality Assurance</h4>
+                <ul>
+                    <li>CMM Inspection Facilities</li>
+                    <li>NABL Calibration Standards</li>
+                    <li>Mill Test Reporting (TC)</li>
+                    <li>Material Testing Protocols</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="section-title">Quality Principles</h3>
+        <p>Our operations follow 9 core Quality Management Principles, including Customer Focus, Leadership, Process Approach, and Continual Improvement to ensure zero-defect delivery.</p>
+
+        <div class="footer">
+            <span>D. K. Techno Industries</span>
+            <span>Page 2</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: PRODUCTS & CONTACT -->
+    <div class="page">
+        <div class="header">
+            <h2>Capabilities & Contact</h2>
+            <img src="logo.png" alt="Logo" style="height: 40px;">
+        </div>
+
+        <h3 class="section-title">Machinery Strength</h3>
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div style="font-size: 0.9rem;">
+                <strong>VMC 4th Axis</strong><br>
+                <strong>CNC Turning</strong><br>
+                <strong>M1TR Machine</strong>
+            </div>
+            <div style="font-size: 0.9rem;">
+                <strong>Centerless Grinding</strong><br>
+                <strong>Radial Drilling</strong><br>
+                <strong>CO2 Welding</strong>
+            </div>
+            <div style="font-size: 0.9rem;">
+                <strong>Band Saw Cutting</strong><br>
+                <strong>Traub & Milling</strong>
+            </div>
+        </div>
+
+        <h3 class="section-title">Key Products</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Precision Parts</h4>
+                <p style="font-size: 0.85rem;">Custom CNC parts for critical engineering applications with tight tolerances.</p>
+            </div>
+            <div class="card">
+                <h4>Assemblies</h4>
+                <p style="font-size: 0.85rem;">Complete structural fabricated assemblies and welded structures.</p>
+            </div>
+        </div>
+
+        <h3 class="section-title">Our Valued Clients</h3>
+        <p style="font-size: 0.9rem;">Montanari Group, Fori Automation, Hindustan Pressings, Kajaria Ceramics, and more.</p>
+
+        <div class="contact-info">
+            <h4 style="margin-top: 0; color: var(--brand-cyan);">Get In Touch</h4>
+            <p><strong>Address:</strong> 95/1 Ekant Plaza, Landge Nagar, Bhosari, Pune - 411039</p>
+            <p><strong>Email:</strong> dktechnoindustries@gmail.com</p>
+            <p><strong>Phone:</strong> +91 96231 59111</p>
+            <p><strong>Website:</strong> www.dktechnoindustries.com</p>
+        </div>
+
+        <div class="footer">
+            <span>D. K. Techno Industries</span>
+            <span>Page 3</span>
+        </div>
+    </div>
+
+</body>
+</html>
