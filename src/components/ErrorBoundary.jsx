@@ -18,30 +18,26 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '2rem',
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          height: '100vh', 
+          width: '100vw',
+          backgroundColor: '#0a1128', 
+          color: 'white', 
+          fontFamily: 'sans-serif',
           textAlign: 'center',
-          backgroundColor: '#0a0a0a',
-          color: '#ffffff',
-          fontFamily: 'system-ui, sans-serif'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}>
-          <h1 style={{ color: '#00b4d8' }}>Something went wrong.</h1>
-          <p style={{ color: '#888', maxWidth: '500px', marginBottom: '2rem' }}>
-            We're sorry, but an unexpected error occurred while loading the page.
+          <h2 style={{ marginBottom: '1rem', fontSize: '1.5rem' }}>Oops! Something went wrong.</h2>
+          <p style={{ marginBottom: '2rem', color: '#e2e8f0', maxWidth: '400px' }}>
+            We encountered an unexpected error. Please try refreshing the page.
           </p>
-          <button
+          <button 
             onClick={() => window.location.reload()}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#00b4d8',
-              border: 'none',
-              borderRadius: '8px',
-              color: 'white',
               fontWeight: '600',
               cursor: 'pointer'
             }}
