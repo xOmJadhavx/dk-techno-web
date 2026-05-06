@@ -853,20 +853,21 @@ function App() {
             <p className="section-subtitle">What our partners say about our precision and commitment.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {[
-              { company: "Montanari Group", text: "D. K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
-              { company: "Fori Automation", text: "Reliable partner for complex fabrication. Their ability to handle difficult geometries and maintain tight tolerances is impressive." },
-              { company: "Hindustan Pressings", text: "Exceptional quality management and professional communication. They feel like an extension of our own manufacturing team." }
             ].map((t, i) => (
               <div key={i} className="glass-panel reveal" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', color: '#ffd700', gap: '2px' }}>
-                  {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
+                  {[...Array(5)].map((_, starI) => <span key={starI}>★</span>)}
                 </div>
                 <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: '1.6' }}>"{t.text}"</p>
                 <div style={{ marginTop: 'auto' }}>
                   <h4 style={{ color: 'var(--brand-cyan)', margin: 0, fontSize: '1.1rem' }}>{t.company}</h4>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="section" style={{ background: 'var(--bg-primary)', position: 'relative', overflow: 'hidden' }}>
         <div className="container">
