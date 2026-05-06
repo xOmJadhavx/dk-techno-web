@@ -33,13 +33,21 @@ class ErrorBoundary extends React.Component {
           boxSizing: 'border-box'
         }}>
           <h2 style={{ marginBottom: '1rem', fontSize: '1.5rem' }}>Oops! Something went wrong.</h2>
-          <p style={{ marginBottom: '2rem', color: '#e2e8f0', maxWidth: '400px' }}>
+          <p style={{ marginBottom: '2rem', color: '#e2e8f0', maxWidth: '400px', margin: '0 auto 2rem auto' }}>
             We encountered an unexpected error. Please try refreshing the page.
           </p>
           <button 
             onClick={() => window.location.reload()}
-              fontWeight: '600',
-              cursor: 'pointer'
+            style={{ 
+              padding: '0.8rem 2rem', 
+              backgroundColor: '#00b4d8', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '8px', 
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontSize: '1rem',
+              boxShadow: '0 4px 15px rgba(0, 180, 216, 0.4)'
             }}
           >
             Refresh Page
