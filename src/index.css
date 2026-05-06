@@ -291,6 +291,9 @@ a {
   align-items: center;
   z-index: 999999;
   transition: opacity 0.8s ease, visibility 0.8s ease;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .preloader.hidden {
@@ -299,22 +302,32 @@ a {
 }
 
 .loader-logo {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 800;
   font-family: var(--font-heading);
   color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   display: flex;
+  flex-direction: column; /* Logo on top, text below */
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .loader-logo {
+    font-size: 1.8rem;
+  }
 }
 
 .loader-line-container {
-  width: 200px;
-  height: 2px;
+  width: 100%;
+  max-width: 250px;
+  height: 3px;
   background: var(--border-glass);
-  border-radius: 2px;
+  border-radius: 4px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .loader-line {
