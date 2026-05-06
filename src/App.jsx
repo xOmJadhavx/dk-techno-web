@@ -929,21 +929,21 @@ function App() {
                 <div className="form-group">
                   <label className="form-label">Name</label>
                   <div style={{ position: 'relative' }}>
-                    <User size={18} style={{ position: 'absolute', top: '50%', left: '1rem', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+                    <User size={16} style={{ position: 'absolute', top: '50%', left: '0.85rem', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)', pointerEvents: 'none', zIndex: 1 }} />
                     <input type="text" name="name" required className="form-control" style={{ paddingLeft: '2.5rem' }} placeholder="Your Name" />
                   </div>
                 </div>
                 <div className="form-group">
                   <label className="form-label">Contact no.</label>
                   <div style={{ position: 'relative' }}>
-                    <Phone size={18} style={{ position: 'absolute', top: '50%', left: '1rem', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+                    <Phone size={16} style={{ position: 'absolute', top: '50%', left: '0.85rem', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)', pointerEvents: 'none', zIndex: 1 }} />
                     <input type="tel" name="phone" required className="form-control" style={{ paddingLeft: '2.5rem' }} placeholder="Contact No." />
                   </div>
                 </div>
                 <div className="form-group">
                   <label className="form-label">Email</label>
                   <div style={{ position: 'relative' }}>
-                    <Mail size={18} style={{ position: 'absolute', top: '50%', left: '1rem', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+                    <Mail size={16} style={{ position: 'absolute', top: '50%', left: '0.85rem', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)', pointerEvents: 'none', zIndex: 1 }} />
                     <input type="email" name="email" required className="form-control" style={{ paddingLeft: '2.5rem' }} placeholder="Email Address" />
                   </div>
                 </div>
