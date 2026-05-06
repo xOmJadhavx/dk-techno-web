@@ -846,7 +846,12 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section" style={{ background: 'var(--bg-glass-heavy)' }}>
+      <section id="testimonials" className="section" style={{ 
+        backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url(https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2560&auto=format&fit=crop)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Client Testimonials</h2>
@@ -873,7 +878,14 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section" style={{ background: 'var(--bg-primary)', position: 'relative', overflow: 'hidden' }}>
+      <section id="contact" className="section" style={{ 
+        backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), url(https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2560&auto=format&fit=crop)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        position: 'relative', 
+        overflow: 'hidden' 
+      }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Contact Us</h2>
