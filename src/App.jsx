@@ -853,6 +853,10 @@ function App() {
             <p className="section-subtitle">What our partners say about our precision and commitment.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {[
+              { company: "Montanari Group", text: "D. K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
+              { company: "Fori Automation", text: "Reliable partner for complex fabrication. Their ability to handle difficult geometries and maintain tight tolerances is impressive." },
+              { company: "Hindustan Pressings", text: "Exceptional quality management and professional communication. They feel like an extension of our own manufacturing team." }
             ].map((t, i) => (
               <div key={i} className="glass-panel reveal" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', color: '#ffd700', gap: '2px' }}>
