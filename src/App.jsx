@@ -886,10 +886,20 @@ function App() {
         position: 'relative', 
         overflow: 'hidden' 
       }}>
-        <div className="container" style={{ maxWidth: '1200px' }}>
-          <div className="grid-2" style={{ gap: '4rem', alignItems: 'center' }}>
+        <div className="container" style={{ maxWidth: '1200px', padding: '0 2rem' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+            gap: '4rem', 
+            alignItems: 'center'
+          }}>
             {/* Left Column: Inquiry Form */}
-            <div className="glass-panel" style={{ padding: '2.5rem', background: 'var(--bg-glass-heavy)', border: '1px solid var(--border-glass)', order: 1 }}>
+            <div className="glass-panel" style={{ 
+              padding: '2.5rem', 
+              background: 'var(--bg-glass-heavy)', 
+              border: '1px solid var(--border-glass)',
+              width: '100%'
+            }}>
               <h3 style={{ fontSize: '1.8rem', margin: 0, marginBottom: '2rem', color: 'var(--text-primary)' }}>Inquiry Form</h3>
               <form onSubmit={handleFormSubmit}>
                 <div className="form-group">
@@ -926,13 +936,13 @@ function App() {
 
                 {formStatus === 'Success' && (
                   <div className="animate-fade-in" style={{ padding: '0.75rem', background: 'rgba(0, 255, 136, 0.1)', border: '1px solid rgba(0, 255, 136, 0.3)', color: '#00ff88', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>
-                    Thank you! Your message has been sent successfully. We will get back to you shortly.
+                    Thank you! Your message has been sent successfully.
                   </div>
                 )}
 
                 {formStatus === 'Error' && (
                   <div className="animate-fade-in" style={{ padding: '0.75rem', background: 'rgba(255, 0, 0, 0.1)', border: '1px solid rgba(255, 0, 0, 0.3)', color: '#ff4444', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>
-                    Oops! Something went wrong. Please try again or email us directly.
+                    Oops! Something went wrong.
                   </div>
                 )}
 
@@ -943,7 +953,7 @@ function App() {
             </div>
 
             {/* Right Column: Branding & Info */}
-            <div className="reveal" style={{ order: 2 }}>
+            <div className="reveal">
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ width: '50px', height: '2px', background: 'var(--brand-cyan)' }}></div>
                 <span style={{ color: 'var(--brand-cyan)', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Connect With Us</span>
