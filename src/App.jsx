@@ -127,32 +127,6 @@ function App() {
       heroDesc: "Specializing in precision machining of bar, forging, casting, press components, and sheet metal parts. Delivering uncompromised quality through state-of-the-art technology.",
       discover: "Discover Our Heritage",
       download: "Download Brochure"
-    },
-    mr: {
-      home: "मुख्यपृष्ठ",
-      about: "आमच्याबद्दल",
-      strength: "क्षमता",
-      products: "उत्पादने",
-      quality: "गुणवत्ता",
-      clients: "ग्राहक",
-      contact: "संपर्क",
-      heroTitle: "प्रिसिजन मशिनिंग आणि फॅब्रिकेशनमध्ये उत्कृष्टता",
-      heroDesc: "बार, फोर्जिंग, कास्टिंग, प्रेस कंपोनंट्स आणि शीट मेटल पार्ट्सच्या प्रिसिजन मशिनिंगमध्ये विशेष. अत्याधुनिक तंत्रज्ञानाद्वारे बिनतोड गुणवत्ता प्रदान करणे.",
-      discover: "आमचा वारसा शोधा",
-      download: "माहिती पुस्तिका"
-    },
-    hi: {
-      home: "मुख्यपृष्ठ",
-      about: "हमारे बारे में",
-      strength: "क्षमता",
-      products: "उत्पाद",
-      quality: "गुणवत्ता",
-      clients: "ग्राहक",
-      contact: "संपर्क",
-      heroTitle: "प्रिसिजन मशीनिंग और फैब्रिकेशन में उत्कृष्टता",
-      heroDesc: "बार, फोर्जिंग, कास्टिंग, प्रेस कंपोनेंट्स और शीट मेटल पार्ट्स की प्रिसिजन मशीनिंग में विशेषज्ञ। अत्याधुनिक तकनीक के माध्यम से अटूट गुणवत्ता प्रदान करना।",
-      discover: "हमारी विरासत खोजें",
-      download: "ब्रोशर डाउनलोड करें"
     }
   };
 
@@ -448,15 +422,6 @@ function App() {
           <li><a href="#quality" className={`nav-link ${activeSection === 'quality' ? 'active' : ''}`} style={activeSection === 'quality' ? { color: 'var(--brand-cyan)' } : {}}>Quality</a></li>
           <li><a href="#clients" className={`nav-link ${activeSection === 'clients' ? 'active' : ''}`} style={activeSection === 'clients' ? { color: 'var(--brand-cyan)' } : {}}>Clients</a></li>
           <li><a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} style={activeSection === 'contact' ? { color: 'var(--brand-cyan)' } : {}}>Contact</a></li>
-          <li>
-            <button
-              onClick={() => setLang(lang === 'en' ? 'mr' : 'en')}
-              style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', color: 'var(--text-primary)', cursor: 'pointer', padding: '4px 10px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 'bold' }}
-              title="Change Language"
-            >
-              {lang === 'en' ? 'EN' : 'मरा'}
-            </button>
-          </li>
           <li>
             <button
               onClick={toggleTheme}
