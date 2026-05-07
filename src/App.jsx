@@ -459,14 +459,6 @@ function App() {
           <li><a href="#quality" onClick={() => setIsMenuOpen(false)}>{t.quality}</a></li>
           <li><a href="#clients" onClick={() => setIsMenuOpen(false)}>{t.clients}</a></li>
           <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.contact}</a></li>
-          <li style={{ marginTop: '1rem' }}>
-            <button
-              onClick={() => { setLang(lang === 'en' ? 'mr' : 'en'); setIsMenuOpen(false); }}
-              style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', color: 'var(--text-primary)', cursor: 'pointer', padding: '8px 20px', borderRadius: '8px', width: '100%' }}
-            >
-              Switch to {lang === 'en' ? 'मराठी (Marathi)' : 'English'}
-            </button>
-          </li>
         </ul>
       </div>
 
