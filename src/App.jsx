@@ -865,7 +865,7 @@ function App() {
         overflow: 'hidden' 
       }}>
         <div className="container" style={{ maxWidth: '1200px', padding: '0 2rem' }}>
-          <div style={{ 
+          <div className="custom-form-container" style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
             gap: '4rem', 
