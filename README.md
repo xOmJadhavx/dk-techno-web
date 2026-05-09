@@ -1,11 +1,11 @@
-# DK Techno Industries — Industrial Web Platform 🏭
+# D. K. Techno Industries — Industrial Web Platform 🏭
 
 [![Vite](https://img.shields.io/badge/Framework-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/Library-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 [![License](https://img.shields.io/badge/Status-Production--Ready-00B4D8?style=for-the-badge)](https://github.com/xOmJadhavx/dk-techno-web)
 
-A high-performance, premium industrial web application built for **DK Techno Industries**. This platform combines state-of-the-art UI/UX with robust manufacturing business logic, designed to showcase precision engineering capabilities to global clients.
+A high-performance, premium industrial web application built for **D. K. Techno Industries**. This platform combines state-of-the-art UI/UX with robust manufacturing business logic, designed to showcase precision engineering capabilities to global clients.
 
 ---
 
@@ -69,4 +69,4 @@ A high-performance, premium industrial web application built for **DK Techno Ind
 
 The project follows a modular React architecture with a central `App.jsx` handling state management for translations and modals, supported by specialized components like `ThreeDCarousel.jsx` for complex UI logic.
 
-Developed with ❤️ for **DK Techno Industries**.
+Developed with ❤️ for **D. K. Techno Industries**.
