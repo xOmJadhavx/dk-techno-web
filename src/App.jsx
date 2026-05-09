@@ -123,8 +123,8 @@ function App() {
       quality: "Quality",
       clients: "Clients",
       contact: "Contact",
-      heroTitle: "D.K. Techno Industries | Excellence in Precision Machining & Fabrication",
-      heroDesc: "D.K. Techno Industries provides industrial engineering, fabrication, automation, and technical solutions. Delivering uncompromised quality through state-of-the-art technology.",
+      heroTitle: "Excellence in Precision Machining & Fabrication",
+      heroDesc: "Specializing in precision machining of bar, forging, casting, press components, and sheet metal parts. Delivering uncompromised quality through state-of-the-art technology.",
       discover: "Discover Our Heritage",
       download: "Download Brochure"
     }
