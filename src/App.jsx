@@ -385,7 +385,7 @@ function App() {
       <div className={`preloader ${!isLoading ? 'hidden' : ''}`}>
         <div className="loader-logo">
           <img src="/logo.png" alt="Logo" style={{ height: '40px', background: 'white', borderRadius: '50%', padding: '2px' }} />
-          <span>D. K. Techno <span className="brand-accent">Industries</span></span>
+          <span>D.K. Techno <span className="brand-accent">Industries</span></span>
         </div>
         <div className="loader-line-container">
           <div className="loader-line" style={{ width: `${loadProgress}%` }}></div>
@@ -411,8 +411,8 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-brand">
-          <img src="/logo.png" alt="D. K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
-          <span>D. K. Techno <span className="brand-accent">Industries</span></span>
+          <img src="/logo.png" alt="D.K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
+          <span>D.K. Techno <span className="brand-accent">Industries</span></span>
         </div>
         <ul className="nav-links">
           <li><a href="#home" className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} style={activeSection === 'home' ? { color: 'var(--brand-cyan)' } : {}}>Home</a></li>
@@ -539,7 +539,7 @@ function App() {
               <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', height: '100%' }}>
                 <div className="glass-panel stat-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Founded by</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}><strong style={{ color: 'var(--brand-cyan)' }}>Mrs. Kanta Eknath Gaikwad</strong>, D. K. Techno Industries has grown into a trusted name in precision engineering.</p>
+                  <p style={{ color: 'var(--text-secondary)' }}><strong style={{ color: 'var(--brand-cyan)' }}>Mrs. Kanta Eknath Gaikwad</strong>, D.K. Techno Industries has grown into a trusted name in precision engineering.</p>
                 </div>
                 <div className="glass-panel stat-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
                   <div style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--text-primary)' }}>
@@ -830,7 +830,7 @@ function App() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {[
-              { company: "Montanari Group", text: "D. K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
+              { company: "Montanari Group", text: "D.K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
               { company: "Fori Automation", text: "Reliable partner for complex fabrication. Their ability to handle difficult geometries and maintain tight tolerances is impressive." },
               { company: "Hindustan Pressings", text: "Exceptional quality management and professional communication. They feel like an extension of our own manufacturing team." }
             ].map((t, i) => (
@@ -945,8 +945,8 @@ function App() {
           <div className="footer-grid">
             <div className="footer-col" style={{ display: 'flex', flexDirection: 'column' }}>
               <div className="navbar-brand" style={{ marginBottom: '1rem' }}>
-                <img src="/logo.png" alt="D. K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
-                <span style={{ fontSize: '1.2rem' }}>D. K. Techno <span className="brand-accent">Industries</span></span>
+                <img src="/logo.png" alt="D.K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
+                <span style={{ fontSize: '1.2rem' }}>D.K. Techno <span className="brand-accent">Industries</span></span>
               </div>
               <p className="footer-desc" style={{ marginBottom: '2.5rem' }}>
                 Pioneers in the field of development and manufacturing of precision engineering components.
@@ -1010,7 +1010,7 @@ function App() {
           </div>
 
           <div className="footer-bottom">
-            <p style={{ marginBottom: '0.5rem' }}>&copy; {new Date().getFullYear()} D. K. Techno Industries. All rights reserved.</p>
+            <p style={{ marginBottom: '0.5rem' }}>&copy; {new Date().getFullYear()} D.K. Techno Industries. All rights reserved.</p>
           </div>
         </div>
       </footer>
