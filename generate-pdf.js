@@ -13,7 +13,7 @@ doc.rect(0, 0, 210, 297, 'F');
 
 doc.setTextColor(cyan[0], cyan[1], cyan[2]);
 doc.setFontSize(30);
-doc.text("D. K. Techno Industries", 105, 100, { align: "center" });
+doc.text("DK Techno Industries", 105, 100, { align: "center" });
 
 doc.setTextColor(255, 255, 255);
 doc.setFontSize(16);
@@ -37,7 +37,7 @@ doc.line(20, 35, 100, 35);
 doc.setFontSize(14);
 doc.text("About Us", 20, 50);
 doc.setFontSize(11);
-const aboutText = "Founded in 2011 by Mrs. Kanta Eknath Gaikwad, D. K. Techno Industries has established itself as a premier name in the precision engineering sector. We specialize in the high-accuracy machining and fabrication of industrial components.";
+const aboutText = "Founded in 2011 by Mrs. Kanta Eknath Gaikwad, DK Techno Industries has established itself as a premier name in the precision engineering sector. We specialize in the high-accuracy machining and fabrication of industrial components.";
 doc.text(doc.splitTextToSize(aboutText, 170), 20, 60);
 
 doc.setFontSize(14);

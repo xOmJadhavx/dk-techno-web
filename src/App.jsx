@@ -73,10 +73,10 @@ const AnimatedCounter = ({ target, duration = 2000, suffix = "" }) => {
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      
+
       // Easing function for smooth deceleration (easeOutExpo)
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      
+
       setCount(Math.floor(easeProgress * target));
 
       if (progress < 1) {
@@ -123,8 +123,8 @@ function App() {
       quality: "Quality",
       clients: "Clients",
       contact: "Contact",
-      heroTitle: "Excellence in Precision Machining & Fabrication",
-      heroDesc: "Specializing in precision machining of bar, forging, casting, press components, and sheet metal parts. Delivering uncompromised quality through state-of-the-art technology.",
+      heroTitle: "D.K. Techno Industries | Industrial Solutions & Engineering Services",
+      heroDesc: "D.K. Techno Industries provides industrial engineering, fabrication, automation, and technical solutions.",
       discover: "Discover Our Heritage",
       download: "Download Brochure"
     }
@@ -134,7 +134,7 @@ function App() {
 
   // Force document title update to clear browser cache
   useEffect(() => {
-    document.title = "D. K. Techno Industries | Precision Manufacturing Excellence";
+    document.title = "D.K. Techno Industries | Industrial Solutions & Engineering Services";
   }, []);
 
   // Dynamic Year Calculation
@@ -148,7 +148,7 @@ function App() {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = window.scrollY;
       setScrollProgress((currentScroll / totalScroll) * 100);
-      
+
       // Update Navbar state
       if (currentScroll > 50) {
         setIsScrolled(true);
@@ -226,10 +226,10 @@ function App() {
   useEffect(() => {
     const cursor = document.querySelector('.custom-cursor');
     const dot = document.querySelector('.custom-cursor-dot');
-    
+
     const handleMouseMove = (e) => {
       const { clientX: x, clientY: y } = e;
-      
+
       // 3D Tilt Logic for cards
       const tiltCards = document.querySelectorAll('.tilt-card');
       tiltCards.forEach(card => {
@@ -238,12 +238,12 @@ function App() {
         const cardY = y - rect.top - rect.height / 2;
         const rotateX = (cardY / (rect.height / 2)) * -10; // Max 10 deg
         const rotateY = (cardX / (rect.width / 2)) * 10;
-        
+
         // Only apply if mouse is close enough to the card
         if (Math.abs(cardX) < rect.width && Math.abs(cardY) < rect.height) {
-           card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         } else {
-           card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
         }
       });
 
@@ -300,7 +300,7 @@ function App() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     const revealElements = document.querySelectorAll('.reveal');
-    
+
     revealElements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -370,13 +370,13 @@ function App() {
   return (
     <>
       {/* Scroll Progress Bar */}
-      <div className="scroll-progress-bar" style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        height: '4px', 
-        background: 'linear-gradient(to right, var(--brand-cyan), var(--accent-blue))', 
-        width: `${scrollProgress}%`, 
+      <div className="scroll-progress-bar" style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '4px',
+        background: 'linear-gradient(to right, var(--brand-cyan), var(--accent-blue))',
+        width: `${scrollProgress}%`,
         zIndex: 10001,
         transition: 'width 0.1s ease-out'
       }}></div>
@@ -385,7 +385,7 @@ function App() {
       <div className={`preloader ${!isLoading ? 'hidden' : ''}`}>
         <div className="loader-logo">
           <img src="/logo.png" alt="Logo" style={{ height: '40px', background: 'white', borderRadius: '50%', padding: '2px' }} />
-          <span>D. K. Techno <span className="brand-accent">Industries</span></span>
+          <span>D.K. Techno <span className="brand-accent">Industries</span></span>
         </div>
         <div className="loader-line-container">
           <div className="loader-line" style={{ width: `${loadProgress}%` }}></div>
@@ -396,7 +396,7 @@ function App() {
       <div className="floating-actions">
         <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="floating-btn whatsapp-btn" title="Chat on WhatsApp">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
           </svg>
         </a>
         <button className={`floating-btn back-to-top-btn ${showScrollTop ? 'visible' : ''}`} onClick={scrollToTop} title="Back to Top">
@@ -411,8 +411,8 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-brand">
-          <img src="/logo.png" alt="D. K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
-          <span>D. K. Techno <span className="brand-accent">Industries</span></span>
+          <img src="/logo.png" alt="D.K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
+          <span>D.K. Techno <span className="brand-accent">Industries</span></span>
         </div>
         <ul className="nav-links">
           <li><a href="#home" className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} style={activeSection === 'home' ? { color: 'var(--brand-cyan)' } : {}}>Home</a></li>
@@ -432,7 +432,7 @@ function App() {
             </button>
           </li>
         </ul>
-        
+
         <div className="mobile-nav-toggle">
           <button
             onClick={toggleTheme}
@@ -440,7 +440,7 @@ function App() {
           >
             {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
           </button>
-          <button 
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
           >
@@ -539,7 +539,7 @@ function App() {
               <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', height: '100%' }}>
                 <div className="glass-panel stat-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Founded by</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}><strong style={{ color: 'var(--brand-cyan)' }}>Mrs. Kanta Eknath Gaikwad</strong>, D. K. Techno Industries has grown into a trusted name in precision engineering.</p>
+                  <p style={{ color: 'var(--text-secondary)' }}><strong style={{ color: 'var(--brand-cyan)' }}>Mrs. Kanta Eknath Gaikwad</strong>, D.K. Techno Industries has grown into a trusted name in precision engineering.</p>
                 </div>
                 <div className="glass-panel stat-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
                   <div style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--text-primary)' }}>
@@ -628,7 +628,7 @@ function App() {
 
             {/* Desktop: 3D Carousel | Mobile: Horizontal Scroll */}
             <div className="desktop-only">
-              <ThreeDCarousel 
+              <ThreeDCarousel
                 items={[
                   { name: "VMC 4th Axis", desc: "Equipped with high-precision 4th axis rotary tables for complex multi-sided machining of aerospace and medical components.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
                   { name: "CNC Turning", desc: "High-speed precision CNC turning centers capable of maintaining tolerances up to 5 microns for critical shafts and bushings.", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop" },
@@ -637,7 +637,7 @@ function App() {
                   { name: "Radial Drilling", desc: "Heavy-duty radial arm drilling machines capable of drilling, tapping, and boring large, heavy workpieces with extreme accuracy and stability.", img: "/images/radial-drilling.jpg" },
                   { name: "CO2 Welding", desc: "Industrial-grade CO2 (MIG) welding stations ensuring strong, deep-penetrating, and clean welds for heavy structural fabrication and intricate assembly work.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" },
                   { name: "Band Saw Cutting", desc: "Automated and manual band saw cutting machinery for precise, clean, and rapid sizing of raw material stock before the primary machining processes begin.", img: "/images/band-saw-cutting.jpg" }
-                ]} 
+                ]}
                 onPreview={(item, index, array) => { setPreviewItem(item); setPreviewIndex(index); setCurrentGallery(array); }}
               />
             </div>
@@ -653,8 +653,8 @@ function App() {
                   { name: "CO2 Welding", desc: "Industrial-grade CO2 welding.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" },
                   { name: "Band Saw Cutting", desc: "Automated sizing of raw material.", img: "/images/band-saw-cutting.jpg" }
                 ].map((machine, index, array) => (
-                  <li 
-                    key={index} 
+                  <li
+                    key={index}
                     className="glass-panel"
                     style={{ minWidth: '280px', padding: '1rem', scrollSnapAlign: 'start' }}
                     onClick={() => { setPreviewItem(machine); setPreviewIndex(index); setCurrentGallery(array); }}
@@ -666,7 +666,7 @@ function App() {
                 ))}
               </ul>
               <div className="swipe-indicator" style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
-                 ← Swipe to explore →
+                ← Swipe to explore →
               </div>
             </div>
           </div>
@@ -684,9 +684,9 @@ function App() {
               { name: "Welded Structures", desc: "Complex multi-piece welded structures for robust industrial load-bearing applications.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" },
               { name: "Custom Solutions", desc: "Bespoke products engineered and manufactured entirely based on specific customer requirements and blueprints.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" }
             ].map((product, index, array) => (
-              <div 
-                key={index} 
-                className="glass-panel tilt-card" 
+              <div
+                key={index}
+                className="glass-panel tilt-card"
                 style={{ cursor: 'pointer', padding: 0, overflow: 'hidden' }}
                 onClick={() => { setPreviewItem(product); setPreviewIndex(index); setCurrentGallery(array); }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.borderColor = 'var(--brand-cyan)'; e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,180,216,0.2)'; }}
@@ -797,8 +797,8 @@ function App() {
             ].map((client, index) => (
               <div key={index} className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', height: '100px', minWidth: '240px', padding: '1rem 1.5rem', background: 'var(--bg-glass-heavy)', border: '1px solid var(--border-glass)', borderRadius: '8px', flexShrink: 0, transition: 'transform 0.3s ease, box-shadow 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 180, 216, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none'; }}>
                 {client.logo && (
-                  <img 
-                    src={client.logo} 
+                  <img
+                    src={client.logo}
                     alt={`${client.name} Logo`}
                     style={{ width: '40px', height: '40px', objectFit: 'contain', background: 'transparent', borderRadius: '4px' }}
                   />
@@ -816,7 +816,7 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section" style={{ 
+      <section id="testimonials" className="section" style={{
         backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.4), rgba(10, 17, 40, 0.6)), url(https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -830,7 +830,7 @@ function App() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {[
-              { company: "Montanari Group", text: "D. K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
+              { company: "Montanari Group", text: "D.K. Techno Industries has consistently delivered high-precision components that meet our rigorous standards. Their attention to detail is unmatched." },
               { company: "Fori Automation", text: "Reliable partner for complex fabrication. Their ability to handle difficult geometries and maintain tight tolerances is impressive." },
               { company: "Hindustan Pressings", text: "Exceptional quality management and professional communication. They feel like an extension of our own manufacturing team." }
             ].map((t, i) => (
@@ -849,18 +849,18 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section" style={{ 
+      <section id="contact" className="section" style={{
         backgroundImage: 'linear-gradient(rgba(10, 17, 40, 0.5), rgba(10, 17, 40, 0.7)), url(https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2560&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative', 
-        overflow: 'hidden' 
+        position: 'relative',
+        overflow: 'hidden'
       }}>
         <div className="container" style={{ maxWidth: '1200px', padding: '0 2rem' }}>
-          <div className="custom-form-container" style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
-            gap: '4rem', 
+          <div className="custom-form-container" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '4rem',
             alignItems: 'center'
           }}>
             {/* Left Column: Branding & Info */}
@@ -878,9 +878,9 @@ function App() {
             </div>
 
             {/* Right Column: Inquiry Form */}
-            <div className="glass-panel" style={{ 
-              padding: '2.5rem', 
-              background: 'var(--bg-glass-heavy)', 
+            <div className="glass-panel" style={{
+              padding: '2.5rem',
+              background: 'var(--bg-glass-heavy)',
               border: '1px solid var(--border-glass)',
               width: '100%'
             }}>
@@ -945,8 +945,8 @@ function App() {
           <div className="footer-grid">
             <div className="footer-col" style={{ display: 'flex', flexDirection: 'column' }}>
               <div className="navbar-brand" style={{ marginBottom: '1rem' }}>
-                <img src="/logo.png" alt="D. K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
-                <span style={{ fontSize: '1.2rem' }}>D. K. Techno <span className="brand-accent">Industries</span></span>
+                <img src="/logo.png" alt="D.K. Techno Industries Logo" style={{ height: '40px', objectFit: 'contain', background: 'white', borderRadius: '50%', padding: '2px', marginRight: '5px' }} />
+                <span style={{ fontSize: '1.2rem' }}>D.K. Techno <span className="brand-accent">Industries</span></span>
               </div>
               <p className="footer-desc" style={{ marginBottom: '2.5rem' }}>
                 Pioneers in the field of development and manufacturing of precision engineering components.
@@ -981,10 +981,10 @@ function App() {
                 <li className="address-item">
                   <div className="address-text-row">
                     <MapPin size={20} style={{ marginTop: '4px', color: isAddressHovered ? 'var(--brand-cyan)' : 'var(--text-secondary)', flexShrink: 0, transition: 'color 0.3s ease' }} />
-                    <a 
-                      href="https://maps.google.com/?q=18.639304888421623,73.8475528956482" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://maps.google.com/?q=18.639304888421623,73.8475528956482"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="address-link"
                       onMouseEnter={() => setIsAddressHovered(true)}
                       onMouseLeave={() => setIsAddressHovered(false)}
@@ -1000,7 +1000,7 @@ function App() {
                         loading="lazy"
                         allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
-                        src="https://maps.google.com/maps?width=100%25&amp;height=120&amp;hl=en&amp;q=18.639304888421623,73.8475528956482+(D.%20K.%20Techno%20Industries)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                        src="https://maps.google.com/maps?width=100%25&amp;height=120&amp;hl=en&amp;q=18.639304888421623,73.8475528956482+(DK%20Techno%20Industries)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                       </iframe>
                     </a>
                   </div>
@@ -1010,47 +1010,47 @@ function App() {
           </div>
 
           <div className="footer-bottom">
-            <p style={{ marginBottom: '0.5rem' }}>&copy; {new Date().getFullYear()} D. K. Techno Industries. All rights reserved.</p>
+            <p style={{ marginBottom: '0.5rem' }}>&copy; {new Date().getFullYear()} D.K. Techno Industries. All rights reserved.</p>
           </div>
         </div>
       </footer>
 
       {/* Detailed Item Modal / Lightbox */}
       {previewItem && (
-        <div 
+        <div
           style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.9)', backdropFilter: 'blur(15px)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem' }}
           onClick={() => setPreviewItem(null)}
         >
           {/* Navigation Buttons */}
-          <button 
+          <button
             onClick={(e) => { e.stopPropagation(); const nextIdx = (previewIndex - 1 + currentGallery.length) % currentGallery.length; setPreviewIndex(nextIdx); setPreviewItem(currentGallery[nextIdx]); }}
             style={{ position: 'absolute', left: '20px', background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', color: 'white', cursor: 'pointer', padding: '1rem', borderRadius: '50%', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <ChevronLeft size={24} />
           </button>
-          
-          <button 
+
+          <button
             onClick={(e) => { e.stopPropagation(); const nextIdx = (previewIndex + 1) % currentGallery.length; setPreviewIndex(nextIdx); setPreviewItem(currentGallery[nextIdx]); }}
             style={{ position: 'absolute', right: '20px', background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', color: 'white', cursor: 'pointer', padding: '1rem', borderRadius: '50%', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <ChevronRight size={24} />
           </button>
 
-          <div 
+          <div
             style={{ position: 'relative', maxWidth: '900px', width: '100%', maxHeight: '90vh', background: 'var(--bg-glass-heavy)', borderRadius: '24px', border: '1px solid var(--border-glass)', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setPreviewItem(null)}
               style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(0,0,0,0.5)', border: 'none', color: 'white', cursor: 'pointer', padding: '0.6rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 11 }}
             >
               <X size={20} />
             </button>
             <div style={{ width: '100%', height: '500px', overflow: 'hidden', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img 
-                src={previewItem.img} 
-                alt={previewItem.name} 
-                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', animation: 'scaleIn 0.4s ease' }} 
+              <img
+                src={previewItem.img}
+                alt={previewItem.name}
+                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', animation: 'scaleIn 0.4s ease' }}
               />
             </div>
             <div style={{ padding: '2.5rem', background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.3))' }}>
