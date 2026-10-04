@@ -79,7 +79,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
-  cursor: none; /* Hide default cursor on desktop */
+  cursor: auto;
   -webkit-font-smoothing: antialiased;
 
   /* Disable text selection site-wide */
@@ -104,61 +104,7 @@ a, button, input, textarea, select {
   cursor: pointer;
 }
 
-/* Custom Cursor */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  border: 2px solid var(--brand-cyan);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
-              height 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
-              background-color 0.3s ease, 
-              border-color 0.3s ease;
-  mix-blend-mode: difference;
-  will-change: transform;
-  transform: translate3d(-50%, -50%, 0);
-  margin-top: -16px; /* Offset for centering */
-  margin-left: -16px;
-}
-
-.custom-cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background-color: var(--brand-cyan);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 100000;
-  mix-blend-mode: difference;
-  will-change: transform;
-  transform: translate3d(-50%, -50%, 0);
-  margin-top: -4px; /* Offset for centering */
-  margin-left: -4px;
-}
-
-.custom-cursor.hovering {
-  width: 45px;
-  height: 45px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: transparent;
-}
-
-/* Ensure default cursor shows on mobile */
-@media (max-width: 768px) {
-  body {
-    cursor: auto;
-  }
-  .custom-cursor, .custom-cursor-dot {
-    display: none !important;
-  }
-}
+/* Custom cursor disabled — using normal browser cursor */
 
 /* We removed body::before global image so we can apply images to sections */
 
@@ -1543,4 +1489,9 @@ textarea.form-control {
   .carousel-3d-container {
     height: 450px;
   }
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Sun,
   Moon,
-  Wrench,
   Cpu,
   ArrowRight,
   CheckCircle2,
@@ -19,7 +18,6 @@ import {
   Briefcase,
   BarChart,
   Network,
-  ChevronDown,
   ChevronUp,
   Upload,
   Clock,
@@ -29,7 +27,6 @@ import {
   ChevronRight
 } from 'lucide-react';
 
-import ThreeDCarousel from './components/ThreeDCarousel.jsx';
 
 // Removed unused social icon components
 import './index.css';
@@ -94,24 +91,89 @@ const AnimatedCounter = ({ target, duration = 2000, suffix = "" }) => {
   return <span ref={counterRef}>{count}{suffix}</span>;
 };
 
+// Reusable Vertical Tabs Component for Machinery
+const VerticalTabs = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div className="vertical-tabs-container" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+      {/* Left side: Tabs list */}
+      <div className="tabs-list" style={{ flex: '1', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        {items.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`tab-btn ${activeIndex === index ? 'active' : ''}`}
+            style={{
+              textAlign: 'left',
+              padding: '1rem 1.5rem',
+              background: activeIndex === index ? 'rgba(0,180,216,0.1)' : 'var(--bg-glass)',
+              border: `1px solid ${activeIndex === index ? 'var(--brand-cyan)' : 'var(--border-glass)'}`,
+              borderRadius: '8px',
+              color: activeIndex === index ? 'var(--brand-cyan)' : 'var(--text-primary)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontWeight: activeIndex === index ? '600' : '400',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <Cpu size={18} style={{ opacity: activeIndex === index ? 1 : 0.5 }} />
+              {item.name}
+            </span>
+            {activeIndex === index && <ArrowRight size={16} />}
+          </button>
+        ))}
+      </div>
+
+      {/* Right side: Active Content */}
+      <div className="tab-content" style={{ flex: '2', minWidth: '300px' }}>
+        {items.map((item, index) => (
+          <div 
+            key={index}
+            className="glass-panel"
+            style={{ 
+              display: activeIndex === index ? 'block' : 'none',
+              padding: 0,
+              overflow: 'hidden',
+              animation: 'fadeInTab 0.5s ease forwards'
+            }}
+          >
+            <div style={{ height: '350px', overflow: 'hidden' }}>
+              <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <div style={{ padding: '2rem' }}>
+              <h4 style={{ color: 'var(--brand-cyan)', marginBottom: '1rem', fontSize: '1.5rem' }}>{item.name}</h4>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0 }}>
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
+    return localStorage.getItem('theme') || 'light';
   });
-  const [activeAccordion, setActiveAccordion] = useState(0);
   const [formStatus, setFormStatus] = useState(null);
   const [previewItem, setPreviewItem] = useState(null);
   const [previewIndex, setPreviewIndex] = useState(0);
   const [currentGallery, setCurrentGallery] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [isAddressHovered, setIsAddressHovered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState('de');
   const [isScrolled, setIsScrolled] = useState(false);
 
   const translations = {
@@ -127,6 +189,19 @@ function App() {
       heroDesc: "Specializing in precision machining of bar, forging, casting, press components, and sheet metal parts. Delivering uncompromised quality through state-of-the-art technology.",
       discover: "Discover Our Heritage",
       download: "Download Brochure"
+    },
+    de: {
+      home: "Startseite",
+      about: "Über uns",
+      strength: "Unsere Stärken",
+      products: "Produkte",
+      quality: "Qualität",
+      clients: "Kunden",
+      contact: "Kontakt",
+      heroTitle: "Exzellenz in Präzisionsfertigung & Bearbeitung",
+      heroDesc: "Spezialisiert auf Präzisionsbearbeitung von Stangen-, Schmiede-, Guss-, Stanzteilen und Blechkomponenten. Wir liefern kompromisslose Qualität durch modernste Technologie.",
+      discover: "Entdecken Sie unsere Geschichte",
+      download: "Broschüre herunterladen"
     }
   };
 
@@ -222,58 +297,31 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Custom Cursor Logic (Direct DOM manipulation for high performance)
+  // 3D Tilt Logic for cards
   useEffect(() => {
-    const cursor = document.querySelector('.custom-cursor');
-    const dot = document.querySelector('.custom-cursor-dot');
-
     const handleMouseMove = (e) => {
       const { clientX: x, clientY: y } = e;
 
-      // 3D Tilt Logic for cards
       const tiltCards = document.querySelectorAll('.tilt-card');
       tiltCards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const cardX = x - rect.left - rect.width / 2;
         const cardY = y - rect.top - rect.height / 2;
-        const rotateX = (cardY / (rect.height / 2)) * -10; // Max 10 deg
+        const rotateX = (cardY / (rect.height / 2)) * -10;
         const rotateY = (cardX / (rect.width / 2)) * 10;
 
-        // Only apply if mouse is close enough to the card
         if (Math.abs(cardX) < rect.width && Math.abs(cardY) < rect.height) {
           card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         } else {
           card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
         }
       });
-
-      // Using requestAnimationFrame for perfectly synced screen updates
-      requestAnimationFrame(() => {
-        if (cursor) {
-          cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-        if (dot) {
-          dot.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-      });
-    };
-
-    const handleMouseOver = (e) => {
-      const tag = e.target.tagName.toLowerCase();
-      // Add more tags or classes to trigger the hover effect
-      if (['a', 'button', 'input', 'textarea', 'select'].includes(tag) || e.target.closest('a') || e.target.closest('button')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 
@@ -333,8 +381,8 @@ function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
+  const toggleLang = () => {
+    setLang(prev => prev === 'en' ? 'de' : 'en');
   };
 
   const handleFormSubmit = async (e) => {
@@ -394,7 +442,8 @@ function App() {
 
       {/* Floating Action Buttons */}
       <div className="floating-actions">
-        <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+        {/* WhatsApp Floating Button — Change the number below to update the WhatsApp redirect */}
+        <a href="https://wa.me/919623159111" target="_blank" rel="noopener noreferrer" className="floating-btn whatsapp-btn" title="Chat on WhatsApp">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
           </svg>
@@ -404,9 +453,7 @@ function App() {
         </button>
       </div>
 
-      {/* Custom Cursor Elements */}
-      <div className={`custom-cursor ${isHovering ? 'hovering' : ''}`} />
-      <div className="custom-cursor-dot" />
+
 
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -415,17 +462,34 @@ function App() {
           <span>D.K. Techno <span className="brand-accent">Industries</span></span>
         </div>
         <ul className="nav-links">
-          <li><a href="#home" className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} style={activeSection === 'home' ? { color: 'var(--brand-cyan)' } : {}}>Home</a></li>
-          <li><a href="#about" className={`nav-link ${activeSection === 'about' ? 'active' : ''}`} style={activeSection === 'about' ? { color: 'var(--brand-cyan)' } : {}}>About Us</a></li>
-          <li><a href="#strength" className={`nav-link ${activeSection === 'strength' ? 'active' : ''}`} style={activeSection === 'strength' ? { color: 'var(--brand-cyan)' } : {}}>Strength</a></li>
-          <li><a href="#products" className={`nav-link ${activeSection === 'products' ? 'active' : ''}`} style={activeSection === 'products' ? { color: 'var(--brand-cyan)' } : {}}>Products</a></li>
-          <li><a href="#quality" className={`nav-link ${activeSection === 'quality' ? 'active' : ''}`} style={activeSection === 'quality' ? { color: 'var(--brand-cyan)' } : {}}>Quality</a></li>
-          <li><a href="#clients" className={`nav-link ${activeSection === 'clients' ? 'active' : ''}`} style={activeSection === 'clients' ? { color: 'var(--brand-cyan)' } : {}}>Clients</a></li>
-          <li><a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} style={activeSection === 'contact' ? { color: 'var(--brand-cyan)' } : {}}>Contact</a></li>
-          <li>
+          <li><a href="#home" className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} style={activeSection === 'home' ? { color: 'var(--brand-cyan)' } : {}}>{t.home}</a></li>
+          <li><a href="#about" className={`nav-link ${activeSection === 'about' ? 'active' : ''}`} style={activeSection === 'about' ? { color: 'var(--brand-cyan)' } : {}}>{t.about}</a></li>
+          <li><a href="#strength" className={`nav-link ${activeSection === 'strength' ? 'active' : ''}`} style={activeSection === 'strength' ? { color: 'var(--brand-cyan)' } : {}}>{t.strength}</a></li>
+          <li><a href="#products" className={`nav-link ${activeSection === 'products' ? 'active' : ''}`} style={activeSection === 'products' ? { color: 'var(--brand-cyan)' } : {}}>{t.products}</a></li>
+          <li><a href="#quality" className={`nav-link ${activeSection === 'quality' ? 'active' : ''}`} style={activeSection === 'quality' ? { color: 'var(--brand-cyan)' } : {}}>{t.quality}</a></li>
+          <li><a href="#clients" className={`nav-link ${activeSection === 'clients' ? 'active' : ''}`} style={activeSection === 'clients' ? { color: 'var(--brand-cyan)' } : {}}>{t.clients}</a></li>
+          <li><a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} style={activeSection === 'contact' ? { color: 'var(--brand-cyan)' } : {}}>{t.contact}</a></li>
+          <li style={{ display: 'flex', alignItems: 'center' }}>
+            <button
+              onClick={toggleLang}
+              style={{
+                background: 'rgba(0, 180, 216, 0.1)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '4px',
+                color: 'var(--brand-cyan)',
+                padding: '2px 8px',
+                fontSize: '0.8rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                marginLeft: '0.5rem'
+              }}
+              title={`Switch to ${lang === 'en' ? 'German' : 'English'}`}
+            >
+              {lang === 'en' ? 'DE' : 'EN'}
+            </button>
             <button
               onClick={toggleTheme}
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: '1rem' }}
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: '0.75rem' }}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -435,8 +499,24 @@ function App() {
 
         <div className="mobile-nav-toggle">
           <button
+            onClick={toggleLang}
+            style={{
+              background: 'rgba(0, 180, 216, 0.1)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '4px',
+              color: 'var(--brand-cyan)',
+              padding: '2px 6px',
+              fontSize: '0.8rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              marginRight: '0.5rem'
+            }}
+          >
+            {lang === 'en' ? 'DE' : 'EN'}
+          </button>
+          <button
             onClick={toggleTheme}
-            style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '0.75rem' }}
           >
             {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
           </button>
@@ -505,7 +585,7 @@ function App() {
             <div style={{ width: '1px', background: 'var(--border-glass)' }}></div>
             <div style={{ flex: '1', minWidth: '200px' }}>
               <div style={{ fontSize: '3.5rem', fontWeight: 'bold', color: 'var(--text-primary)', lineHeight: '1' }}>
-                <AnimatedCounter target={10} suffix="k+" />
+                <AnimatedCounter target={950} suffix="+" />
               </div>
               <div style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '0.5rem', fontWeight: '500' }}>Projects Completed</div>
             </div>
@@ -626,49 +706,17 @@ function App() {
               <h3 style={{ fontSize: '1.5rem', margin: 0, color: 'var(--text-primary)' }}>Machinery Strength</h3>
             </div>
 
-            {/* Desktop: 3D Carousel | Mobile: Horizontal Scroll */}
-            <div className="desktop-only">
-              <ThreeDCarousel
-                items={[
-                  { name: "VMC 4th Axis", desc: "Equipped with high-precision 4th axis rotary tables for complex multi-sided machining of aerospace and medical components.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "CNC Turning", desc: "High-speed precision CNC turning centers capable of maintaining tolerances up to 5 microns for critical shafts and bushings.", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "M1TR Machine", desc: "Versatile tool-room milling machines for specialized prototype development, fixture manufacturing, and precision secondary operations.", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "Centerless Grinding", desc: "Specialized grinding services for high-volume cylindrical components, ensuring perfect roundness and superior surface finishes.", img: "/images/centerless-grinding.jpg" },
-                  { name: "Radial Drilling", desc: "Heavy-duty radial arm drilling machines capable of drilling, tapping, and boring large, heavy workpieces with extreme accuracy and stability.", img: "/images/radial-drilling.jpg" },
-                  { name: "CO2 Welding", desc: "Industrial-grade CO2 (MIG) welding stations ensuring strong, deep-penetrating, and clean welds for heavy structural fabrication and intricate assembly work.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "Band Saw Cutting", desc: "Automated and manual band saw cutting machinery for precise, clean, and rapid sizing of raw material stock before the primary machining processes begin.", img: "/images/band-saw-cutting.jpg" }
-                ]}
-                onPreview={(item, index, array) => { setPreviewItem(item); setPreviewIndex(index); setCurrentGallery(array); }}
-              />
-            </div>
-
-            <div className="mobile-only">
-              <ul style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '1rem', listStyle: 'none', scrollSnapType: 'x mandatory' }}>
-                {[
-                  { name: "VMC 4th Axis", desc: "Equipped with high-precision 4th axis rotary tables.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "CNC Turning", desc: "High-speed precision CNC turning centers.", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "M1TR Machine", desc: "Versatile tool-room milling machines.", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "Centerless Grinding", desc: "High-volume cylindrical grinding.", img: "/images/centerless-grinding.jpg" },
-                  { name: "Radial Drilling", desc: "Heavy-duty radial arm drilling.", img: "/images/radial-drilling.jpg" },
-                  { name: "CO2 Welding", desc: "Industrial-grade CO2 welding.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" },
-                  { name: "Band Saw Cutting", desc: "Automated sizing of raw material.", img: "/images/band-saw-cutting.jpg" }
-                ].map((machine, index, array) => (
-                  <li
-                    key={index}
-                    className="glass-panel"
-                    style={{ minWidth: '280px', padding: '1rem', scrollSnapAlign: 'start' }}
-                    onClick={() => { setPreviewItem(machine); setPreviewIndex(index); setCurrentGallery(array); }}
-                  >
-                    <img src={machine.img} alt={machine.name} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '8px', marginBottom: '1rem' }} />
-                    <h4 style={{ color: 'var(--brand-cyan)', marginBottom: '0.5rem' }}>{machine.name}</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{machine.desc}</p>
-                  </li>
-                ))}
-              </ul>
-              <div className="swipe-indicator" style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
-                ← Swipe to explore →
-              </div>
-            </div>
+            <VerticalTabs 
+              items={[
+                { name: "VMC 4th & 5th Axis", desc: "Equipped with high-precision 4th and 5th axis rotary tables for complex multi-sided machining of aerospace, automotive, and medical components.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
+                { name: "CNC Turning", desc: "High-speed precision CNC turning centers capable of maintaining tolerances up to 5 microns for critical shafts and bushings.", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop" },
+                { name: "CNC 5th Axis", desc: "Advanced 5-axis CNC machining centers for producing complex geometries, contoured surfaces, and undercuts in a single setup.", img: "https://images.unsplash.com/photo-1565153158-ebc3587e5967?q=80&w=1200&auto=format&fit=crop" },
+                { name: "M1TR Machine", desc: "Versatile tool-room milling machines for specialized prototype development, fixture manufacturing, and precision secondary operations.", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop" },
+                { name: "Centerless Grinding", desc: "Specialized grinding services for high-volume cylindrical components, ensuring perfect roundness and superior surface finishes.", img: "/images/centerless-grinding.jpg" },
+                { name: "Automatic Band Saw Machine", desc: "Fully automatic band saw cutting machines for precise, rapid, and consistent sizing of raw material stock with minimal material waste.", img: "/images/band-saw-cutting.jpg" },
+                { name: "CO2 Welding", desc: "Industrial-grade CO2 (MIG) welding stations ensuring strong, deep-penetrating, and clean welds for heavy structural fabrication and intricate assembly work.", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" }
+              ]}
+            />
           </div>
 
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--text-primary)', textAlign: 'center' }}>Featured Products</h3>
@@ -677,7 +725,6 @@ function App() {
               { name: "Precision Machined Components", desc: "Custom CNC machined parts crafted to exact dimensional tolerances for critical engineering applications.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
               { name: "Custom Forged Parts", desc: "High-strength forged metal components designed to withstand intense mechanical stress.", img: "/images/custom_forged_parts.png" },
               { name: "Fabricated Assemblies", desc: "Complete structural assemblies fabricated and welded to precise blueprint specifications.", img: "/images/Fabricated-Assemblies.jpg" },
-              { name: "Sheet Metal Pressings", desc: "Accurately formed sheet metal components for structural and aesthetic use cases.", img: "/images/sheet_metal_pressing.jpg" },
               { name: "Heavy Duty Brackets", desc: "Durable and reliable brackets engineered for heavy industrial machinery.", img: "/images/heavy-duty-brackets.jpg" },
               { name: "Hydraulic Fittings", desc: "Leak-proof custom hydraulic fittings manufactured with exacting thread tolerances.", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=1200&auto=format&fit=crop" },
               { name: "Cast Machine Bases", desc: "Solid cast foundations providing stability and vibration damping for large equipment.", img: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=1200&auto=format&fit=crop" },
